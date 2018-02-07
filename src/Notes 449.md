@@ -52,7 +52,7 @@
     !
     Bitwise
     & - compare bits Ex: 1100&1010= 1000
-    | - compare bits ExL 1100|1010 = 1110
+    | - compare bits Ex: 1100|1010 = 1110
     ~ - turn bits to other values Ex: ~010 = 101
     ^ - XOR, ecclusive or Ex: 1100^101 = 0110
     << - left shift operator: 1100(2) << 2(10)
