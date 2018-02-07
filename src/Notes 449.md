@@ -110,7 +110,7 @@
     scanf("%d", &n);
     int[n];
 * This is illegal
-    * However, it is perfectlwould normaly legal in C99
+    * However, it is perfectly legal in C99
     * There is a way to achieve this in C89, just not with this syntax
 * What is normal in Java is an OUT OF BOUNDS EXC.
     * However, there are no "exceptions" in C
