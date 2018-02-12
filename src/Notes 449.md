@@ -176,3 +176,19 @@
     int *p;
     p = &x; // p holds address of x, x holds 3
     x = 3; or *p = 3 //changes the value at what p is pointing to
+### 2/12
+* Pointers as parameters
+    * Use to return a value
+    * Avoid cost of copying a giant struct or value
+* Arrow pointer dereference
+    * struct pixel p;
+    * (*p).red
+    * p->red
+        * These two statements calling red are equivalent in nature
+* Why strings do not need & for their address when passing to scanf
+    * scanf("%s", str); //Correct statement
+    * The name of an array stands in for its address
+* Pointer Arithmetic
+    * C scales by type
+    * Meaning adding 1 to an address will move it by a (type) size (possibly 4 addresses)
+    * This will go for any type, particularly for arrays
