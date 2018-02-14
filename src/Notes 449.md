@@ -192,3 +192,31 @@
     * C scales by type
     * Meaning adding 1 to an address will move it by a (type) size (possibly 4 addresses)
     * This will go for any type, particularly for arrays
+### 2/14
+* malloc(int size)
+    * Allocates memory of the int size
+    * functions sort of like new ___ in java
+    * allows dynamic allocation of memory
+    * enables us to create runtime-specified sizes for things like structs or arrays
+    * if it fails it will return NULL
+    * if something is not freed at the end of its use, it will create a memory leak
+        * Meaning long-running programs would eventually run out of space
+* Scope
+    * where in the code you can use a variable name
+    * enforced by compilers
+        * encapsulation - cannot be used elsewhere
+        * reuse names
+    * Compile time (static) concept
+* Lifetime
+    * when memory is allocated for a variable
+    * Runtime (dynamic) concept
+#
+                Scope             Lifetime
+    "local"     Block      function call->return
+    auto var
+    
+    "global"    File       Program start->finish
+    
+    "Malloc'd"  pointers      Malloc -> Free
+* "static" keyword locally
+    * allows for limited scope (block) but program lifetime
