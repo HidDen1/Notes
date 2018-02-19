@@ -220,3 +220,45 @@
     "Malloc'd"  pointers      Malloc -> Free
 * "static" keyword locally
     * allows for limited scope (block) but program lifetime
+### 2/19
+* From code to software
+    * C source (.c files)
+    * Preprocessor (C source -> preprocessed source)
+        * "#include" takes header files and puts it into our code
+    * Compiler
+        * Takes the preprocessed source and turns it into object files
+    * Object Files (.o)
+        * Mostly machine code
+        * Meaning source code written by the programmer
+        * But what about the library functions? Other C files we wrote?
+            * The Linker (the next step)
+    * The Linker
+        * Links all source files dependent on eachother
+        * This way the code now contains all necessary code files (like the library functions)
+        * End result...
+* Executable file
+    * Is now a runnable file
+        * Kind of
+        * It contains the POTENTIAL for a program
+        * It is in storage though, not memory
+        * It has to get to memory to run
+        * Since it is compiled, it can be run anywhere
+            * No requirement of source code necessary
+    * What do we need to store?
+    * Code, Data, More??
+        * Resources like images and sounds
+    * Agreed upon on a common format (much like with bitmap tags)
+        * Every system has a different file format (for executables)
+    * Old executable file formats:
+        * a.out (assembler OUTput)
+            * Oldest UNIX format
+            * Not used anymore
+        * COFF (Common Object File Format)
+            * Older UNIX format
+            * Not used anymore
+            * Ancestor of Portable Executable File Format (PE)
+                * Used by windows
+        * ELF (Executable & Linking Format)
+            * Linux
+        * Mach-O
+            * Mac
