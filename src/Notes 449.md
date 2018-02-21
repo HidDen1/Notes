@@ -262,3 +262,31 @@
             * Linux
         * Mach-O
             * Mac
+# 2/21
+* Program's address space
+    * When a program is set to execute by the OS, it needs to be in memory to run
+        * The OS then allocates an "Address soace" in RAM
+        * This space contains different "blocks"
+            * Text (code)
+            * Data (globals)
+            * Data (heap)
+                * Runtime variables
+            * Stack
+                * Keeps track of runtime in general
+        * If you try to access space OUTSIDE OF the program's space OR in an unauthorized address (the program's space, but not in use just yet)
+            * Crash
+* The Linker
+    * Static Linking
+        * Copy code into executable at compile time
+        * Done by "linker"
+    * Dynamic Linking
+        * Copy code into Address Space at load time or later
+        * Code is from an archive file
+            * DLL: Windows
+            * SO: UNIX
+        * Done by link loader
+        * At load time
+    * Dynamic Loading
+        * copies data & code from some archive file into address space
+        * At runtime
+    * Which of these is the best way to link???
