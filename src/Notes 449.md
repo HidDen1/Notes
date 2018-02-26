@@ -262,7 +262,7 @@
             * Linux
         * Mach-O
             * Mac
-# 2/21
+### 2/21
 * Program's address space
     * When a program is set to execute by the OS, it needs to be in memory to run
         * The OS then allocates an "Address soace" in RAM
@@ -290,3 +290,50 @@
         * copies data & code from some archive file into address space
         * At runtime
     * Which of these is the best way to link???
+### 2/26
+* A pointer but instead of a variable a function??
+    * A pointer function
+        * Gives the location of *code* in memory rather than data
+#
+    int f(int x){
+        return x;
+    }
+    
+    int main(){
+        int (*g)(int x);
+    
+        g = f;
+        printf("%d\n", g(3));
+        return 0;
+    }
+* X86
+    * Not MIPS
+        * That is a reduced instruction set
+        * Maybe at 130 instructions at most
+    * This is a complex instruction set
+        * Hundreds of instruction sets, well over 700
+    * Lets give an example of an instruction
+        * F2XM1 - Compute 2^x-1
+            * Except x has to be between -1 and 1
+* 32-bit x86 general purpose registers
+    * EAX - Accumulator
+    * EBX - Base
+    * ECX - Counter
+    * EDX - Data
+    * ESI - String Source
+    * EDI - String Destination
+* Other registers
+    * EIP - Instruction pointer
+    * ESP - Stack pointer
+    * EBP - Base or Frame Pointer
+    
+    * EFLAGS - Flag register
+* Thats a lot of Es isn't it?
+    * It is for Extended
+    * Meaning without it, its just a 16 bit register
+        * for compatability
+    * If you change AX, you've changed the lower 16 bits of EAX
+        * these exist for every register
+        * some registers allow access to a single byte
+        * but only the first four general purpose regs
+        
