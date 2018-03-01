@@ -336,4 +336,7 @@
         * these exist for every register
         * some registers allow access to a single byte
         * but only the first four general purpose regs
-        
+### 2/28
+* Activation record
+    * A stack basically keeping track of what "function" is running
+    
