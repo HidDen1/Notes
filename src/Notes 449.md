@@ -339,4 +339,21 @@
 ### 2/28
 * Activation record
     * A stack basically keeping track of what "function" is running
-    
+### 3/12
+* Local variables are typically allocated to the stack activation record
+    * For arrays, this is like a "dynamic allocation"
+    * The stack will have a huge activation record to get room for the array plus lots of padding
+    * This is what enables vulnerabilities if the array takes input that isn't checked right (scanf)
+    * You can overrite data and eventually overrite a jump so now the user can jump to any address they want
+        * allowing them to run code in our program
+        * ..and add code to the program thru input redirection
+        * and now the user can do anything
+        * so gets() and scanf() are vulnerable
+            * scanf can be told to be careful using %#s # = a number
+        * use fgets() because a parameter is the size
+* Null (NUL) is address 0x00000000
+    * Anytime it is accessed, the CPU knows and tells the OS to crash you
+* OS jobs:
+    * Manage resources
+    * Abstract details
+        * Prevent maliciousness
