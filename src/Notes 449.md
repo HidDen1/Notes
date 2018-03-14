@@ -353,7 +353,40 @@
         * use fgets() because a parameter is the size
 * Null (NUL) is address 0x00000000
     * Anytime it is accessed, the CPU knows and tells the OS to crash you
+### 3/14
 * OS jobs:
     * Manage resources
+        * Keep track of who gets what ram or bandwidth or HD space
     * Abstract details
         * Prevent maliciousness
+        * Keep details we don't need away
+            * prevent confusion
+* There are details we are concerned with though:
+* Memory Management
+    * We need to know what is taken and what is free
+    * Simple when thinking about the Stack
+        * This is where it begins, and the rest is free
+    * But what about the heap?
+        * Memory can be freed in the middle, far different from the stack where it is freed from "top to bottom"
+        * Meaning we don't know yet what exactly is freed and what isn't
+    * Maybe use "chunks"
+        * designate a space of bits that we map as either used (1) or free (0)
+        * But if we are mapping a small space, say a chunk size of a byte
+            * We are wasting 11% of space now
+            * So what do?
+        * Make the chunk size huge
+            * Now its efficiently mapping
+            * But what if we want to use an int of space?
+            * Well you'll get at least that, but now you have the rest of the chunk empty
+        * We have to make it big so to waste less space, but not large because it could fragment easily
+            * We have to benchmark it, figure out what will be comfortable for the program
+            * Typically 4096 bytes (4 Kbytes)
+        * Memory "chunk" by OS memory: Page
+            * chunk of disk: block
+        * But maybe we want to decrease the space used even more than 4 kb
+            * Compression?
+                * By writing the data in a bigger base, we can write down the amount of space filled with (1)s rather than with the 1s themselves
+                    * Called run length encoding
+                * Encode lengths of runs and sparse places using a linked list
+                    * Now it has information about what is and isn't freed, and their lengths, rather than the actual information
+                        * By omitting the free space and writing down the used space
