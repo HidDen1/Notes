@@ -430,3 +430,13 @@
     }
 * External fragmentation
     * When there is wasted space in between allocated chunks
+### 3/20 (recitation)
+* Stack problem #5:
+#
+    argument        | main function
+    return address  |
+    local           |
+    b = 1                   | f function
+    a = 4                   |  
+    return address of main  |
+    local of f              //HERE
