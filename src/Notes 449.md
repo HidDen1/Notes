@@ -390,3 +390,43 @@
                 * Encode lengths of runs and sparse places using a linked list
                     * Now it has information about what is and isn't freed, and their lengths, rather than the actual information
                         * By omitting the free space and writing down the used space
+### 3/19
+* What if we want to allocate some small unit in our bitmap?
+    * Well what about the middle spaces?
+    * Could be okay, as long as it won't fragment any more
+        * (say there are four spaces to allocate, if we allocate the two middle, now we have two one space fragments)
+    * Allocation strategies:
+        * First Fit:
+            * find the first free block, starting from its beginning, that can accomodate the request
+            * Has to consider whole bitmap each time, much slower than it can be
+        * Next Fit:
+            * Find the first free block, starting where the last search left off, that can accomodate the request
+            * Won't know if there is no space available for request without looping back to beginning
+        * Best fit:
+            * Find the free block that is closest in size to the request
+            * Tries to prevent fragmentation
+                * If there is no best fit, runtime becomes much worse and fragmentation becomes the worst
+        * Worst fit
+            * Find the free block with the most left over after fulfilling the request
+            * Will eventually result in a bunch of equally-sized small free spaces after several somewhat small sized allocations
+            * This means if a big allocation comes along, there is no place to fulfill it
+        * Quick Fit
+            * Keep several lists of free blocks of common sizes, allocate from the list that nearest matches the request
+            * This way we can figure out which size of list we want to give to any specific request
+    * Reclaiming Free Space:
+        * When something is freed, we need to update our lists to show this change
+        * In the Linked-List implementation, this means we must consider the nodes before and after
+        * If there is more free space prior or after our reclaimed space, we can combine these nodes
+        * Now we have a larger chunk of free space that a larger allocation could potentially use
+        * This is why this implementation will required a doubly-linked-list
+#
+    malloc implementation project 3:
+    void *my_malloc(int size){
+        return (sbrk(size + sizeof(struct node)) + sizeof(struct node));
+    }
+    void free(void *p){
+        p-sizeof(struct node);
+        //do the coalescing talked about in notes, as in merge nodes and reduce heap size
+    }
+* External fragmentation
+    * When there is wasted space in between allocated chunks
