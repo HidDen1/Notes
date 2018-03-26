@@ -440,3 +440,14 @@
     a = 4                   |  
     return address of main  |
     local of f              //HERE
+### 3/26
+* Preprocessor directives
+    * Include:
+        * Takes a header file and plops the contents into the code
+    * Define:
+        * Creates a "global final" variable in a sense
+        * Replaces some named token with the contents defined
+        * Can create functions as well
+            * However, they will not have the concept of type
+            * So use it carefully
+        
