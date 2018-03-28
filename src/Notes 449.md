@@ -450,4 +450,28 @@
         * Can create functions as well
             * However, they will not have the concept of type
             * So use it carefully
+### 3/28
+* Preprocessor directives (cont.)
+    * if
+        * A condition that can be evaluated by the preprocessor
+        * Is before compilation so can only be done with constants and defined things
+        * Ends with an endif
+        * If the condition evaluated is true, the code is included in compilation
+        * If it is false, the code is omitted
+        * Useful for "commenting" code out for debugging purposes
+            * And conditional operation
+            * Say if a function has different names in the C library on different OS's
+            * We can use the preprocessor to determine what code runs depending on our libraries
+    * if defined
+        * Checks to see if a macro has been defined
+        * (It can technically be defined to nothing but still be defined)
+        * also ifdef
+        * can be notted (!)
+            * Or just ifindef
+    * undef
+        * undefines a macro
+        * RIP
+     * Macros can be defined in the commandline using -D(MACRO NAME)=VALUE
+     * typedef
+        * allows you to define a specific type using a different name
         
