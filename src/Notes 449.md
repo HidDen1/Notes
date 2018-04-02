@@ -474,4 +474,15 @@
      * Macros can be defined in the commandline using -D(MACRO NAME)=VALUE
      * typedef
         * allows you to define a specific type using a different name
+### 4/1
+* Global variables only apply to one file
+    * extern can be used to import variables from other files
+        * it will be the same memory location in both files
+    * cannot use the same variable name across all files
+* Static with globals and functions
+    * It means "Allocate this, give it an address, but throw away the name after compilation"
+        * So static globals cannot be extern'd
+        * And static functions cannot be prototyped
+        * These static variables and functions can only be used in their file
+        * Encapsulation!!!...?
         
